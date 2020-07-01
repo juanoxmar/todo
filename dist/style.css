@@ -3,8 +3,11 @@
     padding: 0;
 }
 
-body {
+html {
     font-size: 10px;
+}
+
+body {
     max-width: 100%;
     font-family: 'Roboto', sans-serif;
 }
@@ -52,7 +55,7 @@ body {
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */
     user-select: none; /* Standard */
-    font-size: 1.8rem;
+    font-size: 2.8rem;
     display: flex;
     align-items: center;
 }
@@ -61,7 +64,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: rgb(120, 120, 120);
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -74,7 +77,7 @@ body {
 }
 
 .new {
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: white;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -88,7 +91,7 @@ body {
 }
 
 .remove {
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: rgb(120, 120, 120);
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
@@ -106,7 +109,7 @@ body {
 }
 
 .projects {
-    font-size: 1rem;
+    font-size: 1.6rem;
     color: white;
     display: flex;
     flex-direction: row;
@@ -160,24 +163,118 @@ body {
 
 /* Modal Content */
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(55, 55, 55);
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
 }
   
   /* The Close Button */
 .close {
     color: #aaaaaa;
     float: right;
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: bold;
+    align-self: flex-end;
 }
   
 .close:hover,
 .close:focus {
-    color: #000;
+    color: red;
     text-decoration: none;
     cursor: pointer;
+}
+
+label {
+    font-size: 1.4rem;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    color: white;
+}
+
+textarea {
+    resize: vertical;
+}
+
+#submitForm, #deleteItem {
+    font-size: 1.4rem;
+    width: 80px;
+    align-self: center;
+    border: none;
+    background-color: rgb(114, 37, 185);
+    color: white;
+    height: 22px;
+    margin-top: 15px;
+}
+
+#submitForm:hover,
+#submitForm:focus,
+#deleteItem:hover,
+#deleteItem:focus {
+    cursor: pointer;
+    background-color: rgb(150, 77, 218);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.listItems {
+    margin: 8px;
+    color: white;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px rgb(40, 40, 40);
+}
+
+.listItems:hover {
+    box-shadow: 2px 2px 5px rgb(25, 25, 25);
+    cursor: pointer;
+}
+
+h1 {
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 1.4rem;
+}
+
+.itemWrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.compBox {
+    width: 16px;
+    height: 16px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 5px;
+    border: 3px solid rgb(55, 55, 55);
+    color: black;
+    text-align: center;
+    font-size: 2.2rem;
+    line-height: 18px;
+    padding-right: 1px;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.compBox:hover {
+    border: 3px solid black;
+}
+
+.dates {
+    margin-bottom: 3px;
 }

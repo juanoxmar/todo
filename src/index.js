@@ -1,6 +1,7 @@
 import _ from 'date-fns';
 import { currentSelection, newProject , getNewProject, displayProjects, removeProjects, projectSubmit, projectDeleteButton, dbProjDel } from './interface'
-//import { projectItem, listItem } from './items.js'
+import { formPop, formClick, submitButton, submitItem, item, newItemDisp, specProjDisp, specProj } from './items'
+import { getItemData, editFormPop } from './edit'
 
 // Your web app's Firebase configuration
 (function () {
@@ -19,4 +20,5 @@ import { currentSelection, newProject , getNewProject, displayProjects, removePr
 
 displayProjects();
 getNewProject();
-currentSelection();
+formClick();
+newItemDisp();

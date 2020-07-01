@@ -1,3 +1,6 @@
+import { closeForm, specProj } from './items'
+import _ from 'date-fns';
+
 const projectDeleteButton = () => {
     const list = document.getElementById('list');
     const appMenu = document.getElementById('appMenu');
@@ -22,6 +25,7 @@ const projectDeleteButton = () => {
 //Module that deletes project from DB
 const dbProjDel = () => {
     const dbRef = firebase.database().ref().child('projects');
+    const liRef = firebase.database().ref().child('list');
     const deleteProject = document.getElementById('deleteProject');
     const list = document.getElementById('list');
 
@@ -37,6 +41,16 @@ const dbProjDel = () => {
                         dbRef.child(childKey).remove();
                 });
             });
+
+            liRef.on('value', snapshot => {
+                snapshot.forEach( childSnapshot => {
+                    const childKey = childSnapshot.key;
+                        
+                    if(childKey == list.innerHTML)
+                        liRef.child(childKey).remove();
+                });
+            });
+
             removeProjects();
             displayProjects();
             document.getElementById('All Items').click();
@@ -90,26 +104,72 @@ const displayProjects = () => {
             newProject(childData);
         });
         currentSelection();
+        specProj();
     });
 };
 
-//Prompt to submit new Project
+const formPop1 = () => {
+    const div = document.createElement('div');
+    const content = document.createElement('div');
+    const span = document.createElement('span');
+    const input = document.createElement('input');
+    const label = document.createElement('label');
+    const container = document.getElementsByClassName('container')[0];
+
+    span.innerHTML = '&times;';
+    span.classList.add('close');
+    content.appendChild(span);
+
+    label.setAttribute('for', 'title');
+    label.innerHTML = 'New Project Title';
+    content.appendChild(label.cloneNode(true));
+    input.setAttribute('type', 'text');
+    input.setAttribute('id', 'title');
+    input.setAttribute('name', 'title');
+    content.appendChild(input.cloneNode(true));
+
+    input.setAttribute('type', 'submit');
+    input.setAttribute('id', 'submitForm');
+    input.removeAttribute('name');
+    content.appendChild(input.cloneNode(true));
+
+    content.classList.add('modal-content');
+    div.appendChild(content);
+
+    div.classList.add('modal');
+    div.setAttribute('id', 'form');
+    container.appendChild(div);
+};
+
 const getNewProject = () => {
     const newProj = document.getElementById('newProject')
     newProj.addEventListener('click', () => {
-        const project = prompt('New Project Name:');
-        if(project == null)
-            return;
-        projectSubmit(project);
+        formPop1();
+        const modal = document.getElementById('form');
+        modal.style.display = 'block';
+        closeForm();
+        submitButton1();
     });
 };
 
-//Submits a project to firebase
-const projectSubmit = (project) => {
-    firebase.database().ref().child('projects').push(project);
-    newProject(project);
+const submitProject = () => { 
+    const title = document.getElementById('title').value;
+    firebase.database().ref().child('projects').push(title);
+    newProject(title);
     currentSelection();
 };
+
+const submitButton1 = () => {
+    const submit = document.getElementById('submitForm');
+    const modal = document.getElementById('form');
+
+    submit.addEventListener('click', () => {
+        submitProject();
+        modal.style.display = 'none'
+        modal.remove();
+    });
+};
+
 
 const currentSelection = () => {
     const project = document.getElementsByClassName('projects');
@@ -122,4 +182,4 @@ const currentSelection = () => {
     }));
 };
 
-export { currentSelection, newProject , getNewProject, displayProjects, removeProjects, projectSubmit, projectDeleteButton, dbProjDel }
+export { currentSelection, newProject , getNewProject, displayProjects, removeProjects, submitProject, projectDeleteButton, dbProjDel }

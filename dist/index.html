@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>toDo</title>
         <link rel="stylesheet" href="style.css">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <div class='container'>
             <div class='menu'>
                 <div class='logo'>
-                    <p>toDo</p>
+                    <h3>toDo</h3>
                 </div>
                 <div class='new' id='newItem'>+</div>
             </div>
@@ -18,14 +19,16 @@
                         <div class='menuText'>Lists</div>
                         <div class='new' id='newProject'>+</div>
                     </div>
-                    <div class='projects' id='All Items'>
+                    <div class='projects currentSelection' id='All Items'>
                         <div class='selection'></div>
                         <div class='projectTab'>All Items</div>
                     </div>
                 </div>
-                <div class='content'>
-                    <div class='appMenu' id='appMenu'>
-                        <div class ='menuText' id='list'>All Items</div>
+                <div class='content' id='content'>
+                    <div class='titleWrapper'>
+                        <div class='appMenu' id='appMenu'>
+                            <div class ='menuText' id='list'>All Items</div>
+                        </div>
                     </div>
                 </div>
             </div>
